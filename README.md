@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# KAI - Social Media Manager
+
+[![GitHub issues](https://img.shields.io/github/issues/yourusername/your-repo-name)](https://github.com/yourusername/your-repo-name/issues)
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/your-repo-name)](https://github.com/yourusername/your-repo-name/stargazers)
+[![GitHub license](https://img.shields.io/github/license/yourusername/your-repo-name)](LICENSE)
+
+## Overview
+
+**Social Media Manager** is a self-hosted content and chat management platform designed to streamline social media tasks for businesses of all sizes. This barebones version includes a responsive dashboard, a content scheduling calendar, basic analytics, and a dark/light theme toggle. **Note:** This project is **under construction** and new features are being added continuously.
+
+## Current Features
+
+- **Dashboard:**  
+  - Basic overview of social media tasks and scheduled posts.
+  
+- **Content Calendar:**  
+  - Schedule and visualize posts on a calendar using [react-big-calendar](https://github.com/jquense/react-big-calendar).
+
+- **Analytics:**  
+  - Display basic analytics using [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2) and [Chart.js](https://www.chartjs.org/).
+
+- **Dark/Light Theme Toggle:**  
+  - Switch between dark and light modes using a custom Material-UI component.
+
+- **Basic Routing & Layout:**  
+  - Responsive header and sidebar navigation using [react-router-dom](https://reactrouter.com/).
+
+## Planned Features
+
+- **Social Media Integration:**  
+  - OAuth integration to connect with platforms like Instagram, Facebook, Twitter, etc.
+  - Multi-account management with secure token handling.
+
+- **Enhanced Post Composer:**  
+  - Rich text editor for creating and scheduling posts.
+  - Media upload support for images and videos.
+
+- **Automated Chat Management:**  
+  - AI-driven chatbots for handling customer queries.
+  - CRM integration for appointment booking and customer management.
+
+- **Advanced Analytics:**  
+  - Detailed engagement metrics and reporting.
+  - Historical trends and data export options.
+
+- **User Management & Collaboration:**  
+  - Multi-user roles with granular permissions.
+  - Real-time notifications and activity logs.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
