@@ -1,3 +1,46 @@
+/* Add CSS variables for light/dark mode */
+:root {
+  --modal-bg: white;
+  --modal-text: #333;
+  --modal-border: #eaeaea;
+  --input-bg: #fff;
+  --input-border: #ddd;
+  --input-text: #333;
+  --button-primary-bg: #4a6cf7;
+  --button-primary-text: white;
+  --button-secondary-bg: white;
+  --button-secondary-text: #6c757d;
+  --button-secondary-border: #6c757d;
+  --button-hover-opacity: 0.9;
+  --platform-btn-bg: white;
+  --platform-btn-text: #333;
+  --platform-btn-border: #ddd;
+  --platform-btn-active-bg: #f0f4ff;
+  --platform-btn-active-border: #4a6cf7;
+  --platform-btn-active-text: #4a6cf7;
+}
+
+.dark-mode {
+  --modal-bg: #252525;
+  --modal-text: #e0e0e0;
+  --modal-border: #444;
+  --input-bg: #333;
+  --input-border: #555;
+  --input-text: #e0e0e0;
+  --button-primary-bg: #5a7cf8;
+  --button-primary-text: white;
+  --button-secondary-bg: #333;
+  --button-secondary-text: #e0e0e0;
+  --button-secondary-border: #777;
+  --button-hover-opacity: 0.8;
+  --platform-btn-bg: #333;
+  --platform-btn-text: #e0e0e0;
+  --platform-btn-border: #555;
+  --platform-btn-active-bg: #4a6cf7;
+  --platform-btn-active-border: #5a7cf8;
+  --platform-btn-active-text: white;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -12,7 +55,8 @@
   }
   
   .post-modal {
-    background-color: white;
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
     border-radius: 8px;
     width: 90%;
     max-width: 700px;
@@ -26,7 +70,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--modal-border);
   }
   
   .modal-header h2 {
@@ -61,7 +105,9 @@
   .form-control {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #ddd;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--input-border);
     border-radius: 4px;
     font-size: 14px;
     transition: border-color 0.2s ease;
@@ -82,9 +128,10 @@
     display: flex;
     align-items: center;
     padding: 8px 12px;
-    border: 1px solid #ddd;
+    background-color: var(--platform-btn-bg);
+    color: var(--platform-btn-text);
+    border: 1px solid var(--platform-btn-border);
     border-radius: 4px;
-    background-color: white;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 14px;
@@ -96,9 +143,9 @@
   }
   
   .platform-btn.active {
-    background-color: #f0f4ff;
-    border-color: #4a6cf7;
-    color: #4a6cf7;
+    background-color: var(--platform-btn-active-bg);
+    border-color: var(--platform-btn-active-border);
+    color: var(--platform-btn-active-text);
   }
   
   .platform-btn:hover {
@@ -216,9 +263,9 @@
   }
   
   .btn-cancel {
-    background-color: white;
-    color: #6c757d;
-    border: 1px solid #6c757d;
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 1px solid var(--button-secondary-border);
     margin-right: 10px;
   }
   
@@ -227,7 +274,9 @@
   }
   
   .btn-save {
-    background-color: #f8f9fa;
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    border: none;
   }
   
   /* Add this to your existing CSS */
@@ -247,4 +296,36 @@
     outline: none;
     border-color: #4a90e2;
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  }
+
+  /* Add styles for datepicker in dark mode */
+  .dark-mode .react-datepicker {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #555;
+  }
+
+  .dark-mode .react-datepicker__header {
+    background-color: #252525;
+    border-color: #444;
+  }
+
+  .dark-mode .react-datepicker__day-name,
+  .dark-mode .react-datepicker__day,
+  .dark-mode .react-datepicker__time-name {
+    color: #e0e0e0;
+  }
+
+  .dark-mode .react-datepicker__day:hover {
+    background-color: #4a6cf7;
+  }
+
+  .dark-mode .react-datepicker__day--selected {
+    background-color: #4a6cf7;
+  }
+
+  .dark-mode .post-textarea {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border-color: var(--input-border);
   }

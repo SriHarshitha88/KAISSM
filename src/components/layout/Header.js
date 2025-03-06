@@ -20,8 +20,23 @@ const Header = ({ onMenuToggle, darkMode, toggleDarkMode }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-          Social Media Manager
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ 
+            flexGrow: 1, 
+            display: 'flex', 
+            alignItems: 'center',
+            fontWeight: 700,
+            letterSpacing: '-0.5px'
+          }}
+        >
+          <img 
+            src="/logo.png" 
+            alt="KAISSM" 
+            style={{ height: 32, marginRight: 12 }} 
+          />
+          Koffee With AI Social Media Manager
         </Typography>
         <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       </Toolbar>

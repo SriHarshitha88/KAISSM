@@ -1,0 +1,115 @@
+/* Analytics.css */
+
+/* Global container for the dashboard */
+.analytics-dashboard {
+    padding: 20px;
+    background-color: #f4f7fa;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Header section styling */
+  .analytics-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  
+  .analytics-header h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #2c3e50;
+  }
+  
+  /* Controls (Time Frame Selector) */
+  .analytics-controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .analytics-controls .MuiFormControl-root {
+    margin-left: 10px;
+  }
+  
+  /* Tabs styling */
+  .analytics-tabs {
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  /* Grid container for card layout */
+  .analytics-grid {
+    margin-top: 20px;
+  }
+  
+  /* Card hover effect for a modern look */
+  .analytics-grid .MuiCard-root {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .analytics-grid .MuiCard-root:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Styling for the Post Performance List */
+  .post-performance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .post-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .post-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .post-platform {
+    font-size: 1.5rem;
+    margin-right: 15px;
+  }
+  
+  .post-title {
+    flex: 1;
+  }
+  
+  .post-metrics {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .metric {
+    text-align: center;
+  }
+  
+  .metric p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    .analytics-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .analytics-controls {
+      margin-top: 10px;
+    }
+  }

@@ -3,6 +3,7 @@ import { FaInstagram, FaLinkedin, FaWhatsapp, FaFacebook, FaTwitter, FaImage, Fa
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './PostModal.css';
+import { useTheme } from '@mui/material/styles';
 
 const PostModal = ({ event, onClose, onSave, slotInfo }) => {
   const [postData, setPostData] = useState({
@@ -15,6 +16,9 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
     end: null,
     mediaPreview: null
   });
+
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
 
   useEffect(() => {
     if (event) {
@@ -37,6 +41,17 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
       });
     }
   }, [event, slotInfo]);
+
+  useEffect(() => {
+    const modalElement = document.querySelector('.post-modal');
+    if (modalElement) {
+      if (isDarkMode) {
+        modalElement.classList.add('dark-mode');
+      } else {
+        modalElement.classList.remove('dark-mode');
+      }
+    }
+  }, [isDarkMode]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
