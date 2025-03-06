@@ -101,7 +101,18 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(postData);
+    
+    // Make sure we have all required data properly formatted
+    const formattedPost = {
+      ...postData,
+      // If this is a new post and no ID was set, create one
+      id: postData.id || Date.now().toString(),
+      // Make sure start and end dates are properly set
+      start: postData.start || new Date(),
+      end: postData.end || new Date(new Date().setHours(new Date().getHours() + 1))
+    };
+    
+    onSave(formattedPost);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -6,17 +6,31 @@ import { FaInstagram, FaLinkedin, FaWhatsapp, FaFacebook, FaTwitter, FaPlus, FaT
 import PostModal from '../modals/PostModal';
 import { PostContext } from '../../context/PostContext';
 import './ContentCalendar.css';
+import { useTheme } from '@mui/material/styles';
 
 const localizer = momentLocalizer(moment);
 
 const ContentCalendar = () => {
-  const { posts, updatePost, deletePost } = useContext(PostContext);
+  const { posts, updatePost, deletePost, addPost } = useContext(PostContext);
   const [view, setView] = useState('month');
   const [date, setDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [expandedEvent, setExpandedEvent] = useState(null);
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+
+  useEffect(() => {
+    const calendarElement = document.querySelector('.content-calendar');
+    if (calendarElement) {
+      if (isDarkMode) {
+        calendarElement.classList.add('dark-mode');
+      } else {
+        calendarElement.classList.remove('dark-mode');
+      }
+    }
+  }, [isDarkMode]);
 
   const handleSelectEvent = (event) => {
     if (expandedEvent && expandedEvent.id === event.id) {
@@ -38,8 +52,18 @@ const ContentCalendar = () => {
   };
 
   const handleSavePost = (postData) => {
-    updatePost(postData);
+    if (postData.id && posts.some(post => post.id === postData.id)) {
+      // This is an existing post being updated
+      console.log("Updating post:", postData);
+      updatePost(postData);
+    } else {
+      // This is a new post being added
+      console.log("Adding new post:", postData);
+      addPost(postData);
+    }
     setShowModal(false);
+    // Add this for debugging
+    console.log("Current posts after save:", posts);
   };
 
   const handleDeletePost = (postId) => {
@@ -233,6 +257,17 @@ const ContentCalendar = () => {
           </div>
         </div>
       )}
+      
+      <button 
+        className="add-post-btn"
+        onClick={() => {
+          setSelectedEvent(null);
+          setSelectedSlot({start: new Date(), end: new Date()});
+          setShowModal(true);
+        }}
+      >
+        <FaPlus />
+      </button>
       
       {showModal && (
         <PostModal
