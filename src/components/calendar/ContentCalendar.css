@@ -1,0 +1,265 @@
+.content-calendar {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-container {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Custom toolbar styling */
+.calendar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.calendar-toolbar-left,
+.calendar-toolbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-button {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.toolbar-button:hover {
+  background-color: #f1f3f5;
+}
+
+.toolbar-button.active {
+  background-color: #4a6cf7;
+  color: white;
+  border-color: #4a6cf7;
+}
+
+.today-button {
+  font-weight: 600;
+  background-color: #4a6cf7;
+  color: white;
+  border-color: #4a6cf7;
+}
+
+.today-button:hover {
+  background-color: #3a5bd9;
+}
+
+.toolbar-nav-buttons {
+  display: flex;
+  margin-right: 15px;
+}
+
+.nav-button {
+  width: 36px;
+  padding: 8px 0;
+}
+
+.calendar-label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Custom event styling */
+.custom-event {
+  display: flex;
+  align-items: center;
+  padding: 2px 5px;
+  border-radius: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 100%;
+}
+
+.event-icon {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.event-title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Platform-specific styling */
+.event-instagram {
+  background-color: rgba(225, 48, 108, 0.2);
+  border-left: 3px solid #E1306C;
+  color: #833AB4;
+}
+
+.event-linkedin {
+  background-color: rgba(0, 119, 181, 0.2);
+  border-left: 3px solid #0077B5;
+  color: #0077B5;
+}
+
+.event-whatsapp {
+  background-color: rgba(37, 211, 102, 0.2);
+  border-left: 3px solid #25D366;
+  color: #075E54;
+}
+
+.event-facebook {
+  background-color: rgba(59, 89, 152, 0.2);
+  border-left: 3px solid #3B5998;
+  color: #3B5998;
+}
+
+.event-twitter {
+  background-color: rgba(29, 161, 242, 0.2);
+  border-left: 3px solid #1DA1F2;
+  color: #1DA1F2;
+}
+
+.instagram {
+  color: #E1306C;
+}
+
+.linkedin {
+  color: #0077B5;
+}
+
+.whatsapp {
+  color: #25D366;
+}
+
+.facebook {
+  color: #3B5998;
+}
+
+.twitter {
+  color: #1DA1F2;
+}
+
+/* Event preview styling */
+.event-preview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.event-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.event-preview-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-preview {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+}
+
+.event-preview-content {
+  padding: 20px;
+}
+
+.event-preview-details p {
+  margin: 8px 0;
+}
+
+.event-preview-media {
+  margin: 15px 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.event-preview-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.event-preview-text {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.event-preview-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.edit-event-btn, .delete-event-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-event-btn {
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  margin-right: 10px;
+}
+
+.edit-event-btn:hover {
+  background-color: #3a5bd9;
+}
+
+.delete-event-btn {
+  background-color: white;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.delete-event-btn:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calendar-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .calendar-toolbar-right {
+    margin-top: 10px;
+  }
+  
+  .event-preview {
+    width: 90%;
+    max-width: 450px;
+  }
+} 

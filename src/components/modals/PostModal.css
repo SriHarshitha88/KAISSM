@@ -1,0 +1,250 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .post-modal {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .close-modal {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .post-modal form {
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #4a6cf7;
+    outline: none;
+  }
+  
+  .platform-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .platform-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+  }
+  
+  .platform-btn svg {
+    margin-right: 6px;
+    font-size: 16px;
+  }
+  
+  .platform-btn.active {
+    background-color: #f0f4ff;
+    border-color: #4a6cf7;
+    color: #4a6cf7;
+  }
+  
+  .platform-btn:hover {
+    background-color: #f8f9fa;
+  }
+  
+  /* Rich text editor styling */
+  .rich-text-editor {
+    margin-bottom: 10px;
+  }
+  
+  .ql-container {
+    min-height: 150px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  
+  .ql-toolbar {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  /* Media upload styling */
+  .media-upload-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .media-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f0f4ff;
+    color: #4a6cf7;
+    border: 1px dashed #4a6cf7;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    width: fit-content;
+  }
+  
+  .media-upload-btn svg {
+    margin-right: 8px;
+  }
+  
+  .media-upload-btn:hover {
+    background-color: #e0e8ff;
+  }
+  
+  .media-preview {
+    position: relative;
+    margin-top: 15px;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 300px;
+  }
+  
+  .media-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .remove-media-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #dc3545;
+    transition: all 0.2s ease;
+  }
+  
+  .remove-media-btn:hover {
+    background-color: white;
+    color: #b02a37;
+  }
+  
+  /* Date and time picker styling */
+  .datetime-group {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .date-picker-container,
+  .time-picker-container {
+    flex: 1;
+  }
+  
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+  
+  /* Modal actions */
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+  
+  .btn-cancel, .btn-save {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-cancel {
+    background-color: white;
+    color: #6c757d;
+    border: 1px solid #6c757d;
+    margin-right: 10px;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .btn-save {
+    background-color: #f8f9fa;
+  }
+  
+  /* Add this to your existing CSS */
+  .post-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .post-textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  }

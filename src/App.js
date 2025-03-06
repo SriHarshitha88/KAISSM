@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import ContentCalendar from './components/calendar/ContentCalendar';
 import Analytics from './components/analytics/Analytics';
 import OAuthCallback from './pages/OAuthCallback';
+import { PostProvider } from './context/PostContext';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -46,30 +47,32 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <Box sx={{ display: 'flex' }}>
-          {/* Header */}
-          <Header onMenuToggle={handleMenuToggle} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+    <PostProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <Box sx={{ display: 'flex' }}>
+            {/* Header */}
+            <Header onMenuToggle={handleMenuToggle} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-          {/* Sidebar */}
-          <Sidebar open={isSidebarOpen} onClose={handleMenuToggle} />
+            {/* Sidebar */}
+            <Sidebar open={isSidebarOpen} onClose={handleMenuToggle} />
 
-          {/* Main Content Area */}
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <Toolbar />
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/calendar" element={<ContentCalendar events={sampleEvents} />} />
-              <Route path="/analytics" element={<Analytics data={sampleAnalyticsData} />} />
-              <Route path="/oauth/callback" element={<OAuthCallback />} />
-            </Routes>
+            {/* Main Content Area */}
+            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+              <Toolbar />
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/calendar" element={<ContentCalendar events={sampleEvents} />} />
+                <Route path="/analytics" element={<Analytics data={sampleAnalyticsData} />} />
+                <Route path="/oauth/callback" element={<OAuthCallback />} />
+              </Routes>
+            </Box>
           </Box>
-        </Box>
-      </Router>
-    </ThemeProvider>
+        </Router>
+      </ThemeProvider>
+    </PostProvider>
   );
 }
 

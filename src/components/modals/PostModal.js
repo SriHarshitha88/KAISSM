@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaWhatsapp, FaFacebook, FaTwitter, FaImage, FaTimes } from 'react-icons/fa';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './PostModal.css';
 
 const PostModal = ({ event, onClose, onSave, slotInfo }) => {
   const [postData, setPostData] = useState({
+    id: null,
     title: '',
     platform: 'instagram',
     content: '',
     media: '',
     start: null,
-    end: null
+    end: null,
+    mediaPreview: null
   });
 
   useEffect(() => {
     if (event) {
       setPostData({
+        id: event.id,
         title: event.title,
         platform: event.platform,
         content: event.content,
         media: event.media,
         start: event.start,
-        end: event.end
+        end: event.end,
+        mediaPreview: event.media
       });
     } else if (slotInfo) {
       setPostData({
         ...postData,
+        id: Date.now(), // Generate a temporary ID
         start: slotInfo.start,
         end: slotInfo.end
       });
@@ -35,6 +43,62 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
     setPostData({ ...postData, [name]: value });
   };
 
+  const handleDateChange = (date) => {
+    // Create a new date with the same time
+    const newStart = new Date(date);
+    newStart.setHours(
+      postData.start ? postData.start.getHours() : new Date().getHours(),
+      postData.start ? postData.start.getMinutes() : new Date().getMinutes()
+    );
+    
+    // End time is 1 hour after start by default
+    const newEnd = new Date(newStart);
+    newEnd.setHours(newStart.getHours() + 1);
+    
+    setPostData({
+      ...postData,
+      start: newStart,
+      end: newEnd
+    });
+  };
+
+  const handleTimeChange = (time) => {
+    const newStart = new Date(postData.start);
+    newStart.setHours(time.getHours(), time.getMinutes());
+    
+    const newEnd = new Date(newStart);
+    newEnd.setHours(newStart.getHours() + 1);
+    
+    setPostData({
+      ...postData,
+      start: newStart,
+      end: newEnd
+    });
+  };
+
+  const handleMediaChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPostData({
+          ...postData,
+          media: reader.result,
+          mediaPreview: reader.result
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeMedia = () => {
+    setPostData({
+      ...postData,
+      media: '',
+      mediaPreview: null
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSave(postData);
@@ -43,7 +107,13 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
   return (
     <div className="modal-overlay">
       <div className="post-modal">
-        <h2>{event ? 'Edit Post' : 'Create New Post'}</h2>
+        <div className="modal-header">
+          <h2>{event ? 'Edit Post' : 'Create New Post'}</h2>
+          <button className="close-modal" onClick={onClose}>
+            <FaTimes />
+          </button>
+        </div>
+        
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Title</label>
@@ -52,7 +122,9 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
               name="title"
               value={postData.title}
               onChange={handleChange}
+              placeholder="Enter post title"
               required
+              className="form-control"
             />
           </div>
           
@@ -80,6 +152,20 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
               >
                 <FaWhatsapp /> WhatsApp
               </button>
+              <button
+                type="button"
+                className={`platform-btn ${postData.platform === 'facebook' ? 'active' : ''}`}
+                onClick={() => setPostData({ ...postData, platform: 'facebook' })}
+              >
+                <FaFacebook /> Facebook
+              </button>
+              <button
+                type="button"
+                className={`platform-btn ${postData.platform === 'twitter' ? 'active' : ''}`}
+                onClick={() => setPostData({ ...postData, platform: 'twitter' })}
+              >
+                <FaTwitter /> Twitter
+              </button>
             </div>
           </div>
           
@@ -89,25 +175,65 @@ const PostModal = ({ event, onClose, onSave, slotInfo }) => {
               name="content"
               value={postData.content}
               onChange={handleChange}
-              rows="4"
-              required
-            ></textarea>
-          </div>
-          
-          <div className="form-group">
-            <label>Media URL (optional)</label>
-            <input
-              type="text"
-              name="media"
-              value={postData.media || ''}
-              onChange={handleChange}
+              placeholder="Write your post content here..."
+              className="form-control post-textarea"
+              rows={5}
             />
           </div>
           
           <div className="form-group">
-            <label>Scheduled Time</label>
-            <div className="datetime-display">
-              {postData.start && new Date(postData.start).toLocaleString()}
+            <label>Media</label>
+            <div className="media-upload-container">
+              <label className="media-upload-btn">
+                <FaImage /> Upload Image
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleMediaChange}
+                  style={{ display: 'none' }}
+                />
+              </label>
+              
+              {postData.mediaPreview && (
+                <div className="media-preview">
+                  <img src={postData.mediaPreview} alt="Preview" />
+                  <button 
+                    type="button" 
+                    className="remove-media-btn"
+                    onClick={removeMedia}
+                  >
+                    <FaTimes />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div className="form-group datetime-group">
+            <div className="date-picker-container">
+              <label>Date</label>
+              <DatePicker
+                selected={postData.start}
+                onChange={handleDateChange}
+                dateFormat="MMMM d, yyyy"
+                className="form-control"
+                required
+              />
+            </div>
+            
+            <div className="time-picker-container">
+              <label>Time</label>
+              <DatePicker
+                selected={postData.start}
+                onChange={handleTimeChange}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                timeCaption="Time"
+                dateFormat="h:mm aa"
+                className="form-control"
+                required
+              />
             </div>
           </div>
           
