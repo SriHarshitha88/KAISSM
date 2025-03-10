@@ -1,7 +1,8 @@
 {
-  "name": "social-media-manager",
-  "version": "0.1.0",
+  "name": "KAISSM",
+  "version": "1.0.0",
   "private": true,
+  "homepage": "https://sriharshitha88.github.io/KAISSM",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -53,8 +54,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://codingbad02.github.io/KAISSM",   <--- **Added missing comma here!**
-
   "devDependencies": {
     "gh-pages": "^6.3.0"
   }
